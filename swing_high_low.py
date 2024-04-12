@@ -123,14 +123,14 @@ class swing_high_low(fisher_transform_inverse_fisher_stochastic):
         pivot_low, pivot_high = [False]* len(pivot_point), [False]* len(pivot_point)
 
 
-        for i in range(period, len(high) ):
+        for i in range(period, len(high)+1 ):
 
             # current_high  = np.max(pivot_point[i:period+i]) === 3--> 4 - 3 + 1 = 2 : 5
-            current_low  = np.min(pivot_point[i- period + 1 :i+1]) # current_low  < pivot_low[pivot_index-1]  or # or current_low  > pivot_low[pivot_index-1]
-            current_high = np.max(pivot_point[i- period + 1 :i+1]) # current_high > pivot_high[pivot_index-1] or  # or current_high < pivot_high[pivot_index-1]
+            # current_low  < pivot_low[pivot_index-1]  or # or current_low  > pivot_low[pivot_index-1]
+            # current_high > pivot_high[pivot_index-1] or  # or current_high < pivot_high[pivot_index-1]
 
-            period_lowest_low   = np.min(low[i-period :i-1])
-            period_highest_high = np.max(high[i -period:i-1])
+            period_lowest_low   = np.min(low[i-period :i])
+            period_highest_high = np.max(high[i -period:i])
 
             current_low  = low[i]
             current_high = high[i]
